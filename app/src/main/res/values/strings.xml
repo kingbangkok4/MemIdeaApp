@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Mem idea</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="url_local">http://10.0.3.2/memidea/</string>
+    <string name="url_web">http://www.memidea.net/</string>
+    <string name="str_url">http://www.memidea.net/</string>
+</resources>

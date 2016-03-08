@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/phone"
+        android:title="กล้องและแฟ้ม"
+        android:showAsAction="ifRoom|withText"
+        />
+
+    <item
+        android:id="@+id/computer"
+        android:title="เลือกฟ้อน"
+        android:showAsAction="ifRoom|withText"
+        />
+
+    <item
+        android:id="@+id/gamepad"
+        android:title="เปลี่ยนสี พื้นหลังและฟ้อน"
+        android:showAsAction="ifRoom|withText"
+        />
+
+    <item
+        android:id="@+id/camera"
+        android:title="เพิ่มรูปประดับสติ๊กเกอร์"
+        android:showAsAction="ifRoom|withText"
+        />
+
+    <item
+        android:id="@+id/video"
+        android:title="แชร์"
+        android:showAsAction="ifRoom|withText"
+        />
+</menu>
+<!--
+    android:icon="@drawable/cf"-->

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tab_note"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:weightSum="1">
+
+    <Spinner
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerMenu"
+        android:gravity="center_vertical"
+        android:textSize="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/editTextNote"
+        android:gravity="top|left"
+        android:background="#ffd6f2f5"
+        android:layout_below="@+id/btnNoteSave"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="1dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="หมวดหมู่ : "
+        android:gravity="left|center_vertical"
+        android:textSize="16dp"
+        android:id="@+id/textView5"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/spinnerMenu"
+        android:layout_toStartOf="@+id/spinnerMenu"
+        android:layout_alignTop="@+id/spinnerMenu"
+        android:textStyle="bold"
+        android:layout_marginLeft="1dp" />
+
+    <EditText
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:hint="กรุณาใส่ชื่อเรื่อง"
+        android:gravity="left|center_vertical"
+        android:textSize="16dp"
+        android:focusable="true"
+        android:textColorHighlight="#ff7eff15"
+        android:textColorHint="#ffff25e6"
+        android:textStyle="bold"
+        android:layout_below="@+id/spinnerMenu"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/textView5"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="ชื่อเรื่อง : "
+        android:gravity="left|center_vertical"
+        android:textSize="16dp"
+        android:id="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/editText"
+        android:layout_alignTop="@+id/editText"
+        android:textStyle="bold"
+        android:layout_toStartOf="@+id/editText"
+        android:layout_marginLeft="1dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:text=""
+        android:id="@+id/btnNoteClear"
+        android:background="@drawable/erasericon"
+        android:layout_marginRight="5dp"
+        android:layout_above="@+id/editTextNote"
+        android:layout_alignEnd="@+id/editTextNote" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:text=""
+        android:id="@+id/btnNoteSave"
+        android:background="@drawable/saveicon"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/editText"
+        android:layout_toStartOf="@+id/btnNoteClear"
+        android:layout_marginTop="2dp" />
+
+</RelativeLayout>
