@@ -18,7 +18,7 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="350dp"
         android:inputType="textMultiLine"
         android:ems="10"
         android:id="@+id/editTextNote"
@@ -26,8 +26,9 @@
         android:background="#ffd6f2f5"
         android:layout_below="@+id/btnNoteSave"
         android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="1dp" />
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginTop="1dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -79,9 +80,8 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:text=""
         android:id="@+id/btnNoteClear"
-        android:background="@drawable/erasericon"
+        android:background="@drawable/er"
         android:layout_marginRight="5dp"
         android:layout_above="@+id/editTextNote"
         android:layout_alignEnd="@+id/editTextNote" />
@@ -90,12 +90,60 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:text=""
         android:id="@+id/btnNoteSave"
-        android:background="@drawable/saveicon"
+        android:background="@drawable/save"
         android:layout_marginRight="10dp"
         android:layout_below="@+id/editText"
         android:layout_toStartOf="@+id/btnNoteClear"
         android:layout_marginTop="2dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/btnShare"
+        android:layout_below="@+id/editTextNote"
+        android:layout_alignEnd="@+id/editTextNote"
+        android:background="@drawable/facebookshare" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/btnEmo"
+        android:background="@drawable/emo"
+        android:layout_below="@+id/editTextNote"
+        android:layout_toStartOf="@+id/btnShare"
+        android:layout_marginRight="10dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/btnBackground"
+        android:background="@drawable/bg_00001"
+        android:layout_below="@+id/editTextNote"
+        android:layout_toStartOf="@+id/btnEmo"
+        android:layout_marginRight="10dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/btnFont"
+        android:background="@drawable/font"
+        android:layout_below="@+id/editTextNote"
+        android:layout_toStartOf="@+id/btnBackground"
+        android:layout_marginRight="10dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/btnImage"
+        android:background="@drawable/iphoto"
+        android:layout_below="@+id/editTextNote"
+        android:layout_toStartOf="@+id/btnFont"
+        android:layout_marginRight="10dp" />
 
 </RelativeLayout>
