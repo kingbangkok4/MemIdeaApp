@@ -16,6 +16,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="10dp" />
 
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="350dp"
