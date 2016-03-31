@@ -3,6 +3,7 @@ package com.app.memidea;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -42,6 +43,12 @@ public class MenuActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // Permission StrictMode
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+
         final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, menu_list);
 
@@ -59,6 +66,27 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
+
+                       Button btnWork           =       (Button)findViewById(R.id.btnWork);
+                       Button btnAgricultural   =   (Button)findViewById(R.id.btnAgricultural);
+                       Button btnTechnology =   (Button)findViewById(R.id.btnTechnology);
+                       Button btnCatchphrase    =   (Button)findViewById(R.id.btnCatchphrase);
+                       Button btnEpigram    =   (Button)findViewById(R.id.btnEpigram);
+                       Button btnPrecept    =   (Button)findViewById(R.id.btnPrecept);
+                       Button btnOther  =   (Button)findViewById(R.id.btnOther);
+
+                btnWork.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            GoToNote("การงาน");
+                        }
+                    });
+                btnTechnology.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        GoToNote("เทคโนโลยี");
+                    }
+                });
             }
 
             @Override
@@ -138,6 +166,12 @@ public class MenuActivity extends AppCompatActivity {
         });
     }
 
+    private void GoToNote(String category) {
+        Intent i = new Intent(MenuActivity.this, NoteAcivity.class);
+        i.putExtra("category", category);
+        startActivity(i);
+    }
+
     private void ValidateData(String category, String title, String detail) {
         final AlertDialog.Builder ad = new AlertDialog.Builder(this);
         if("".equals(category) || "".equals(title)  || "".equals(detail) ){
@@ -155,8 +189,8 @@ public class MenuActivity extends AppCompatActivity {
             params.add(new BasicNameValuePair("category", category));
             params.add(new BasicNameValuePair("title", title));
             params.add(new BasicNameValuePair("detail", detail));
-            String resultServer = Http.getHttpPost(url, params);
 
+            String resultServer = Http.getHttpPost(url, params);
             JSONObject c;
             try {
                 c = new JSONObject(resultServer);

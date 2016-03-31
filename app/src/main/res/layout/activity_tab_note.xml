@@ -37,7 +37,7 @@
         android:text="หมวดหมู่ : "
         android:gravity="left|center_vertical"
         android:textSize="16dp"
-        android:id="@+id/textView5"
+        android:id="@+id/textViewCategory"
         android:layout_alignParentStart="true"
         android:layout_alignBottom="@+id/spinnerCategory"
         android:layout_toStartOf="@+id/spinnerCategory"
@@ -58,7 +58,7 @@
         android:textStyle="bold"
         android:layout_below="@+id/spinnerCategory"
         android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/textView5"
+        android:layout_toEndOf="@+id/textViewCategory"
         android:layout_marginTop="5dp" />
 
     <TextView

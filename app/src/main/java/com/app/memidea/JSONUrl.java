@@ -1,5 +1,6 @@
 package com.app.memidea;
 
+
 import android.util.Log;
 
 import org.apache.http.HttpEntity;
@@ -19,20 +20,20 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 /**
- * Created by nuttapong_i on 01/03/2559.
+ * Created by nuttapong_i on 31/03/2559.
  */
-public class HttpActivity {
-    public String getHttpPost(String url,List<NameValuePair> params) {
+public class JSONUrl {
+    public String getJSONUrl(String url,List<NameValuePair> params) {
         StringBuilder str = new StringBuilder();
         HttpClient client = new DefaultHttpClient();
         HttpPost httpPost = new HttpPost(url);
 
         try {
-            httpPost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
+            httpPost.setEntity(new UrlEncodedFormEntity(params));
             HttpResponse response = client.execute(httpPost);
             StatusLine statusLine = response.getStatusLine();
             int statusCode = statusLine.getStatusCode();
-            if (statusCode == 200) { // Status OK
+            if (statusCode == 200) { // Download OK
                 HttpEntity entity = response.getEntity();
                 InputStream content = entity.getContent();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(content));
@@ -41,7 +42,7 @@ public class HttpActivity {
                     str.append(line);
                 }
             } else {
-                Log.e("Log", "Failed to download result..");
+                Log.e("Log", "Failed to download file..");
             }
         } catch (ClientProtocolException e) {
             e.printStackTrace();
