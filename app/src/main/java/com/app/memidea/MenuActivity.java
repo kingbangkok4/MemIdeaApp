@@ -1,5 +1,6 @@
 package com.app.memidea;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -11,19 +12,29 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MenuActivity extends AppCompatActivity {
     private String[] menu_list = { "การงาน", "เกษตร", "เทคโนโลยี", "บทกลอน", "คำคม", "ธรรมมะ", "อื่นๆ" };
-
-    private Spinner spnMenu;
-    private EditText txtNote;
+    private String strCategory = "";
+    private Spinner spnCategory;
+    private EditText txtTitle, txtNote;
     private Button btNoteSave, btNoteClear;
     private String note = "";
+    HttpActivity Http = new HttpActivity();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,23 +64,38 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
 
-                spnMenu = (Spinner)viewPager.findViewById(R.id.spinnerMenu);
+                spnCategory = (Spinner)viewPager.findViewById(R.id.spinnerCategory);
+                txtTitle = (EditText) viewPager.findViewById(R.id.editTextTitle);
                 txtNote = (EditText) viewPager.findViewById(R.id.editTextNote);
+
                 btNoteSave = (Button) viewPager.findViewById(R.id.btnNoteSave);
                 btNoteClear = (Button) viewPager.findViewById(R.id.btnNoteClear);
 
                 dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spnMenu.setAdapter(dataAdapter);
+                spnCategory.setAdapter(dataAdapter);
 
                 btNoteSave.setVisibility(View.INVISIBLE);
                 btNoteClear.setVisibility(View.INVISIBLE);
 
+                spnCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view,
+                                               int position, long id) {
+                        spnCategory.setSelection(position);
+                        strCategory = (String) spnCategory.getSelectedItem();
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> arg0) {
+
+                    }
+                });
+
                 btNoteSave.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        ValidateData(strCategory, txtTitle.getText().toString().trim(), txtNote.getText().toString().trim());
                     }
-
                 });
                 btNoteClear.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -110,6 +136,45 @@ public class MenuActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void ValidateData(String category, String title, String detail) {
+        final AlertDialog.Builder ad = new AlertDialog.Builder(this);
+        if("".equals(category) || "".equals(title)  || "".equals(detail) ){
+            // Dialog
+            ad.setTitle("แจ้งเตือน! ");
+            ad.setIcon(android.R.drawable.btn_star_big_on);
+            ad.setPositiveButton("ปิด", null);
+            ad.setMessage("กรุณาระบุข้อมูลให้ครบถ้วนก่อนบันทึก!");
+            ad.show();
+        }else {
+            String strStatusID = "0";
+            String strError = "Unknow Status!";
+            String url = getString(R.string.str_url) + "saveNote.php";
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("category", category));
+            params.add(new BasicNameValuePair("title", title));
+            params.add(new BasicNameValuePair("detail", detail));
+            String resultServer = Http.getHttpPost(url, params);
+
+            JSONObject c;
+            try {
+                c = new JSONObject(resultServer);
+                strStatusID = c.getString("StatusID");
+                strError = c.getString("Error");
+            } catch (JSONException e) {
+                // TODO Auto-generated catch block
+                strError = e.getMessage();
+                e.printStackTrace();
+            }
+
+            // Dialog
+            ad.setTitle("สถานะการบันทึก! ");
+            ad.setIcon(android.R.drawable.btn_star_big_on);
+            ad.setPositiveButton("ปิด", null);
+            ad.setMessage(strError);
+            ad.show();
+        }
     }
 
    /* @Override

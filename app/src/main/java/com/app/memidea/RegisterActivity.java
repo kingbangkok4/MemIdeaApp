@@ -94,13 +94,13 @@ public class RegisterActivity extends Activity {
         }
 
         // Prepare Login
-        if (strStatusID.equals("0")) {
-            // Dialog
+        if (strStatusID.equals("0")) { // Dialog
             ad.setTitle("แจ้งเตือน! ");
             ad.setIcon(android.R.drawable.btn_star_big_on);
             ad.setPositiveButton("ปิด", null);
             ad.setMessage(strError);
             ad.show();
+
         } else {
             Toast.makeText(RegisterActivity.this, "สมัครสมาชิกสำเร็จ", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(RegisterActivity.this, MainActivity.class);

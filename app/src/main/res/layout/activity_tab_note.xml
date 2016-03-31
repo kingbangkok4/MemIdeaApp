@@ -9,7 +9,7 @@
     <Spinner
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:id="@+id/spinnerMenu"
+        android:id="@+id/spinnerCategory"
         android:gravity="center_vertical"
         android:textSize="20dp"
         android:layout_alignParentTop="true"
@@ -39,16 +39,16 @@
         android:textSize="16dp"
         android:id="@+id/textView5"
         android:layout_alignParentStart="true"
-        android:layout_alignBottom="@+id/spinnerMenu"
-        android:layout_toStartOf="@+id/spinnerMenu"
-        android:layout_alignTop="@+id/spinnerMenu"
+        android:layout_alignBottom="@+id/spinnerCategory"
+        android:layout_toStartOf="@+id/spinnerCategory"
+        android:layout_alignTop="@+id/spinnerCategory"
         android:textStyle="bold"
         android:layout_marginLeft="1dp" />
 
     <EditText
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/editTextTitle"
         android:hint="กรุณาใส่ชื่อเรื่อง"
         android:gravity="left|center_vertical"
         android:textSize="16dp"
@@ -56,7 +56,7 @@
         android:textColorHighlight="#ff7eff15"
         android:textColorHint="#ffff25e6"
         android:textStyle="bold"
-        android:layout_below="@+id/spinnerMenu"
+        android:layout_below="@+id/spinnerCategory"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/textView5"
         android:layout_marginTop="5dp" />
@@ -70,10 +70,10 @@
         android:textSize="16dp"
         android:id="@+id/textView2"
         android:layout_alignParentStart="true"
-        android:layout_alignBottom="@+id/editText"
-        android:layout_alignTop="@+id/editText"
+        android:layout_alignBottom="@+id/editTextTitle"
+        android:layout_alignTop="@+id/editTextTitle"
         android:textStyle="bold"
-        android:layout_toStartOf="@+id/editText"
+        android:layout_toStartOf="@+id/editTextTitle"
         android:layout_marginLeft="1dp" />
 
     <Button
@@ -93,7 +93,7 @@
         android:id="@+id/btnNoteSave"
         android:background="@drawable/save"
         android:layout_marginRight="10dp"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/editTextTitle"
         android:layout_toStartOf="@+id/btnNoteClear"
         android:layout_marginTop="2dp" />
 
