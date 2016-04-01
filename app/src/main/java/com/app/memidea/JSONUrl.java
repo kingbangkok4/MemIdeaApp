@@ -1,6 +1,7 @@
 package com.app.memidea;
 
 
+import android.os.StrictMode;
 import android.util.Log;
 
 import org.apache.http.HttpEntity;
@@ -28,8 +29,14 @@ public class JSONUrl {
         HttpClient client = new DefaultHttpClient();
         HttpPost httpPost = new HttpPost(url);
 
+        // Permission StrictMode
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+
         try {
-            httpPost.setEntity(new UrlEncodedFormEntity(params));
+            httpPost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
             HttpResponse response = client.execute(httpPost);
             StatusLine statusLine = response.getStatusLine();
             int statusCode = statusLine.getStatusCode();

@@ -29,13 +29,14 @@ import java.util.List;
 
 
 public class MenuActivity extends AppCompatActivity {
-    private String[] menu_list = { "การงาน", "เกษตร", "เทคโนโลยี", "บทกลอน", "คำคม", "ธรรมมะ", "อื่นๆ" };
+    private String[] menu_list = {"การงาน", "เกษตร", "เทคโนโลยี", "บทกลอน", "คำคม", "ธรรมมะ", "อื่นๆ"};
     private String strCategory = "";
     private Spinner spnCategory;
     private EditText txtTitle, txtNote;
     private Button btNoteSave, btNoteClear;
     private String note = "";
     HttpActivity Http = new HttpActivity();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,32 +68,32 @@ public class MenuActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
 
-                       Button btnWork           =       (Button)findViewById(R.id.btnWork);
-                       Button btnAgricultural   =   (Button)findViewById(R.id.btnAgricultural);
-                       Button btnTechnology =   (Button)findViewById(R.id.btnTechnology);
-                       Button btnCatchphrase    =   (Button)findViewById(R.id.btnCatchphrase);
-                       Button btnEpigram    =   (Button)findViewById(R.id.btnEpigram);
-                       Button btnPrecept    =   (Button)findViewById(R.id.btnPrecept);
-                       Button btnOther  =   (Button)findViewById(R.id.btnOther);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                Button btnWork = (Button) viewPager.findViewById(R.id.btnWork);
+                Button btnAgricultural = (Button) viewPager.findViewById(R.id.btnAgricultural);
+                Button btnTechnology = (Button) viewPager.findViewById(R.id.btnTechnology);
+                Button btnCatchphrase = (Button) viewPager.findViewById(R.id.btnCatchphrase);
+                Button btnEpigram = (Button) viewPager.findViewById(R.id.btnEpigram);
+                Button btnPrecept = (Button) findViewById(R.id.btnPrecept);
+                Button btnOther = (Button) findViewById(R.id.btnOther);
 
                 btnWork.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            GoToNote("การงาน");
-                        }
-                    });
+                    @Override
+                    public void onClick(View v) {
+                        GoToNote("การงาน");
+                    }
+                });
                 btnTechnology.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         GoToNote("เทคโนโลยี");
                     }
                 });
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-                spnCategory = (Spinner)viewPager.findViewById(R.id.spinnerCategory);
+                //***************************************************************************
+                spnCategory = (Spinner) viewPager.findViewById(R.id.spinnerCategory);
                 txtTitle = (EditText) viewPager.findViewById(R.id.editTextTitle);
                 txtNote = (EditText) viewPager.findViewById(R.id.editTextNote);
 
@@ -156,7 +157,6 @@ public class MenuActivity extends AppCompatActivity {
 
                     }
                 });
-
             }
 
             @Override
@@ -166,6 +166,7 @@ public class MenuActivity extends AppCompatActivity {
         });
     }
 
+
     private void GoToNote(String category) {
         Intent i = new Intent(MenuActivity.this, NoteAcivity.class);
         i.putExtra("category", category);
@@ -174,14 +175,14 @@ public class MenuActivity extends AppCompatActivity {
 
     private void ValidateData(String category, String title, String detail) {
         final AlertDialog.Builder ad = new AlertDialog.Builder(this);
-        if("".equals(category) || "".equals(title)  || "".equals(detail) ){
+        if ("".equals(category) || "".equals(title) || "".equals(detail)) {
             // Dialog
             ad.setTitle("แจ้งเตือน! ");
             ad.setIcon(android.R.drawable.btn_star_big_on);
             ad.setPositiveButton("ปิด", null);
             ad.setMessage("กรุณาระบุข้อมูลให้ครบถ้วนก่อนบันทึก!");
             ad.show();
-        }else {
+        } else {
             String strStatusID = "0";
             String strError = "Unknow Status!";
             String url = getString(R.string.str_url) + "saveNote.php";
@@ -274,6 +275,7 @@ public class MenuActivity extends AppCompatActivity {
         }*/
         return true;
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
       /*  if (requestCode == 1234 && resultCode == RESULT_OK) {

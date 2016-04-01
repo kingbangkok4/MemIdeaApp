@@ -41,7 +41,6 @@ public class NoteAcivity extends Activity{
 
         Intent intent = getIntent();
         String i_category = intent.getStringExtra("category");
-        txtCategory.setText(i_category);
 
         // Permission StrictMode
         if (android.os.Build.VERSION.SDK_INT > 9) {
@@ -53,6 +52,8 @@ public class NoteAcivity extends Activity{
         txtTitle = (EditText)findViewById(R.id.editTextTitle);
         lvNote = (ListView)findViewById(R.id.listViewNote);
         btSearch = (Button)findViewById(R.id.btnSearch);
+
+        txtCategory.setText(i_category);
 
         LoadData(txtCategory.getText().toString().trim(), "");
 
@@ -139,4 +140,33 @@ public class NoteAcivity extends Activity{
             e.printStackTrace();
         }
     }
+
+   /* public String getJSONUrl(String url,List<NameValuePair> params) {
+        StringBuilder str = new StringBuilder();
+        HttpClient client = new DefaultHttpClient();
+        HttpPost httpPost = new HttpPost(url);
+
+        try {
+            httpPost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
+            HttpResponse response = client.execute(httpPost);
+            StatusLine statusLine = response.getStatusLine();
+            int statusCode = statusLine.getStatusCode();
+            if (statusCode == 200) { // Download OK
+                HttpEntity entity = response.getEntity();
+                InputStream content = entity.getContent();
+                BufferedReader reader = new BufferedReader(new InputStreamReader(content));
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    str.append(line);
+                }
+            } else {
+                Log.e("Log", "Failed to download file..");
+            }
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return str.toString();
+    }*/
 }
