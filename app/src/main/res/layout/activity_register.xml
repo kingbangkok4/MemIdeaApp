@@ -84,5 +84,17 @@
         android:textStyle="bold"
         android:layout_marginBottom="10dp" />
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextEmail"
+        android:hint="อีเมล์"
+        android:inputType="phone"
+        android:focusable="true"
+        android:textColorHighlight="#ff7eff15"
+        android:textColorHint="#ffff25e6"
+        android:layout_below="@+id/editTextConfirmPassword"
+        android:layout_centerHorizontal="true" />
+
 
 </RelativeLayout>
