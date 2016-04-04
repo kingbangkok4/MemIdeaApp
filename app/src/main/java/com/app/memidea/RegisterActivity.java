@@ -22,7 +22,7 @@ import java.util.List;
  * Created on 01/03/2559.
  */
 public class RegisterActivity extends Activity {
-    EditText txtPhone, txtPassword, txtConfirmPassword;
+    EditText txtPhone, txtPassword, txtConfirmPassword, txtEmail;
     Button btRegister, btBack;
     HttpActivity Http = new HttpActivity();
 
@@ -40,6 +40,7 @@ public class RegisterActivity extends Activity {
         txtPhone = (EditText) findViewById(R.id.editTextPhone);
         txtPassword = (EditText) findViewById(R.id.editTextPassword);
         txtConfirmPassword = (EditText) findViewById(R.id.editTextConfirmPassword);
+        txtEmail = (EditText)findViewById(R.id.editTextEmail);
 
         btRegister = (Button) findViewById(R.id.btnRegister);
         btBack = (Button) findViewById(R.id.btnBack);
@@ -66,12 +67,13 @@ public class RegisterActivity extends Activity {
         String strStatusID = "0";
         String strMemberID = "0";
         String strError = "Unknow Status!";
-        if (!"".equals(txtPhone.getText().toString().trim()) && !"".equals(txtPassword.getText().toString().trim()) && !"".equals(txtConfirmPassword.getText().toString().trim())) {
+        if (!"".equals(txtEmail.getText().toString().trim()) && !"".equals(txtPhone.getText().toString().trim()) && !"".equals(txtPassword.getText().toString().trim()) && !"".equals(txtConfirmPassword.getText().toString().trim())) {
             if (txtPassword.getText().toString().trim().equals(txtConfirmPassword.getText().toString().trim())) {
                 String url = getString(R.string.str_url) + "register.php";
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
                 params.add(new BasicNameValuePair("strUser", txtPhone.getText().toString().trim()));
                 params.add(new BasicNameValuePair("strPass", txtPassword.getText().toString().trim()));
+                params.add(new BasicNameValuePair("strEmail", txtEmail.getText().toString().trim()));
                 String resultServer = Http.getHttpPost(url, params);
 
                 JSONObject c;
