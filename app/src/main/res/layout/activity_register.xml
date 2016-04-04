@@ -89,7 +89,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/editTextEmail"
         android:hint="อีเมล์"
-        android:inputType="phone"
+        android:inputType="textEmailAddress"
         android:focusable="true"
         android:textColorHighlight="#ff7eff15"
         android:textColorHint="#ffff25e6"
