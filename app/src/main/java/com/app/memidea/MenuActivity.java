@@ -86,6 +86,12 @@ public class MenuActivity extends AppCompatActivity {
                         GoToNote("การงาน");
                     }
                 });
+                btnAgricultural.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        GoToNote("เกษตร");
+                    }
+                });
                 btnTechnology.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
